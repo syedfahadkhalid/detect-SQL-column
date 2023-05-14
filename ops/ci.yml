@@ -1,0 +1,23 @@
+team: #
+email: #
+slack: #
+project: python
+agent: pipeline-generator-agent
+source: bitbucket
+branch: master
+
+parameters:
+  - name: "COMMIT_ID"
+    description: "Commit hash for the latest commit on the source branch"
+    defaultValue: ""
+
+stages:
+  - pii-column-check
+
+jobs:
+- name: pii-column-check
+  stage: pii-column-check
+  branch: master
+  cmd: make pii-column-check
+  agent: #
+  dockerenv: #
